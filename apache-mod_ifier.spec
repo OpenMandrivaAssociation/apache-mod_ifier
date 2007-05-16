@@ -5,13 +5,13 @@
 
 Summary:	Request filtering and rejection module for Apache2
 Name:		apache-%{mod_name}
-Version:	0.7
-Release:	%mkrel 2
+Version:	0.8
+Release:	%mkrel 1
 Group:		System/Servers
 License:	GPL
 URL:		http://www.steve.org.uk/Software/mod_ifier/
 Source0:	http://www.steve.org.uk/Software/mod_ifier/mod-ifier-%{version}.tar.bz2
-Source1:	%{mod_conf}.bz2
+Source1:	%{mod_conf}
 Patch0:		mod-ifier-0.4-no_apr_compat.diff
 Requires(pre): rpm-helper
 Requires(postun): rpm-helper
@@ -52,10 +52,12 @@ done
 find . -type f|xargs file|grep 'CRLF'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
 find . -type f|xargs file|grep 'text'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
 
+cp %{SOURCE1} %{mod_conf}
+
 %build
 
 pushd src
-    %{_sbindir}/apxs -c %{mod_name}.c
+    %{_sbindir}/apxs -DVERSION='\"%{version}\"' -c %{mod_name}.c
 popd
 
 %install
@@ -65,7 +67,7 @@ install -d %{buildroot}%{_sysconfdir}/httpd/modules.d
 install -d %{buildroot}%{_libdir}/apache-extramodules
 
 install -m0755 src/.libs/%{mod_so} %{buildroot}%{_libdir}/apache-extramodules/
-bzcat %{SOURCE1} > %{buildroot}%{_sysconfdir}/httpd/modules.d/%{mod_conf}
+install -m0644 %{mod_conf} %{buildroot}%{_sysconfdir}/httpd/modules.d/%{mod_conf}
 
 %post
 if [ -f /var/lock/subsys/httpd ]; then
@@ -87,5 +89,3 @@ fi
 %doc README docs/example.conf docs/AUTHORS
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/httpd/modules.d/%{mod_conf}
 %attr(0755,root,root) %{_libdir}/apache-extramodules/%{mod_so}
-
-
