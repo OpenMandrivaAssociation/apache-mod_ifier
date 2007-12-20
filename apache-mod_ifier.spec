@@ -21,6 +21,7 @@ Requires:	apache-conf >= 2.0.54
 Requires:	apache >= 2.0.54
 BuildRequires:  apache-devel >= 2.0.54
 BuildRequires:	file
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 This is a simple Apache 2.x module which is designed to stand in front of
