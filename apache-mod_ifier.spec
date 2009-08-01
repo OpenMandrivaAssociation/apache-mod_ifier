@@ -6,7 +6,7 @@
 Summary:	Request filtering and rejection module for Apache2
 Name:		apache-%{mod_name}
 Version:	0.8
-Release:	%mkrel 6
+Release:	%mkrel 7
 Group:		System/Servers
 License:	GPL
 URL:		http://www.steve.org.uk/Software/mod_ifier/
