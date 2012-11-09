@@ -1,0 +1,10 @@
+--- src/mod_ifier.c	2006-08-28 01:37:16.000000000 +0200
++++ src/mod_ifier.c.oden	2009-01-07 10:16:41.000000000 +0100
+@@ -32,7 +32,6 @@
+ /* Apache Headers */
+ #include "ap_compat.h"
+ #include "apr.h"
+-#include "apr_compat.h"
+ #include "apr_file_io.h"
+ #include "apr_hooks.h"
+ #include "apr_lib.h"
