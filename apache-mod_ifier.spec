@@ -9,7 +9,7 @@ Version:	0.8
 Release:	%mkrel 11
 Group:		System/Servers
 License:	GPL
-URL:		http://www.steve.org.uk/Software/mod_ifier/
+URL:		https://www.steve.org.uk/Software/mod_ifier/
 Source0:	http://www.steve.org.uk/Software/mod_ifier/mod-ifier-%{version}.tar.bz2
 Source1:	%{mod_conf}
 Patch0:		mod-ifier-0.4-no_apr_compat.diff
